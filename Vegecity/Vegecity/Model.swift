@@ -7,24 +7,26 @@
 
 import Foundation
 
-struct Plant: Identifiable, Hashable {
+struct Plante: Identifiable, Hashable {
     let id = UUID()
     let nom: String
     let type: String
     let details : String
-    var favorites : Bool = false
-    var image: String = "photo"
+    var favorites : Bool
+    var image: String
 }
 
 struct Activite: Identifiable, Hashable {
     let id = UUID()
     let nom: String // nom du lieu
+    let cp: Int // code postale pour definir les arrondissement
     let description: String // description lieu : potager partagé
     let date: Date //activité  date, heure? de l'activité
     let image: String // image de l'activité
     let nbrPlace: Int // nombre de place max
     let niveau: Int //1, 2 ou 3
     let accessibilite: Bool
+    let inscription: Bool
     let option: Problematique
 }
 
