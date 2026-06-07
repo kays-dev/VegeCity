@@ -65,3 +65,8 @@ let messagesEnvoyesGroupe2 = [
 ]
 
 let groupe2 = Groupe(activite: activite2, membres: [membres[3], membres[4], membres[5], utilisateur], messagesRecus: messagesRecusGroupe2, messagesEnvoyes: messagesEnvoyesGroupe2)
+
+let groupes = [
+    groupe1,
+    groupe2
+]
