@@ -33,7 +33,7 @@ struct CarteGroupes: View {
             
             VStack(alignment: .leading){
                 Text(titre)
-                    .font(.title3)
+                    .font((.custom("IosevkaCharonMono-Bold", size: 20, relativeTo: .title2)))
                     .foregroundStyle(.vcBodyPrimary)
                 
                 HStack(spacing: 12){
@@ -48,14 +48,14 @@ struct CarteGroupes: View {
                             .lineLimit(1)
                     }
                 }
-                .font(.caption)
+                .font((.custom("IosevkaCharonMono-Regular", size: 14, relativeTo: .caption)))
                 .foregroundStyle(.vcBodySecondary)
                 
                 Spacer()
                 
                 Text(dernierMessage)
+                    .font((.custom("IosevkaCharonMono-Italic", size: 17, relativeTo: .footnote)))
                     .lineLimit(1)
-                    .italic()
                     .foregroundStyle(.vcBodySecondary)
                     .padding(.trailing, 56)
             }

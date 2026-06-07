@@ -18,7 +18,7 @@ struct BarreDeRecherche: View {
                     Image(systemName: "magnifyingglass")
                     
                     TextField("Rechercher un groupe", text: $saisie, axis: .vertical)
-                        .font(.default)
+                        .font((.custom("IosevkaCharonMono-Medium", size: 17, relativeTo: .callout)))
                 }
                 .foregroundStyle(.vcSearchbarText)
                 .padding(.horizontal, 20)
