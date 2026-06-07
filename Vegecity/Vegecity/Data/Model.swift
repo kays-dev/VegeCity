@@ -27,7 +27,7 @@ struct Activite: Identifiable, Hashable {
     let niveau: Int //1, 2 ou 3
     let accessibilite: Bool
     let inscription: Bool
-    let option: Problematique
+    let option: [Problematique]
 }
 
 struct Membre: Identifiable, Hashable {
@@ -43,4 +43,10 @@ struct Problematique: Identifiable, Hashable  {
     let icone: String
 }
 
-
+struct Groupe: Identifiable, Hashable {
+    let id = UUID()
+    let activite: Activite
+    let membres: [Membre]
+    let messagesRecus: [String]
+    let messagesEnvoyes: [String]
+}
