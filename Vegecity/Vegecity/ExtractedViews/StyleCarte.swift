@@ -7,13 +7,11 @@
 
 import SwiftUI
 
-struct BaseCarte<Content: View>: View {
+struct StyleCarte: ViewModifier {
     
-    @ViewBuilder var content: () -> Content
-    
-    var body: some View {
+    func body(content: Content) -> some View {
         HStack(alignment: .top, spacing: 16){
-            content()
+            content
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(16)
@@ -27,8 +25,14 @@ struct BaseCarte<Content: View>: View {
     }
 }
 
-#Preview {
-    BaseCarte(){
+extension View {
+    func styleCarte()  -> some View {
+        modifier(StyleCarte())
+    }
+}
+        
+struct ExempleCarte: View {
+    var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Exemple de content() (dans la _Preview_)")
             HStack(alignment: .top){
@@ -52,5 +56,10 @@ struct BaseCarte<Content: View>: View {
             .frame(height: 100)
             
         }
+        .styleCarte()
     }
+}
+
+#Preview {
+    ExempleCarte()
 }
