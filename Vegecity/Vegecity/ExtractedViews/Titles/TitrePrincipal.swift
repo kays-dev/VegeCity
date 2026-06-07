@@ -23,13 +23,16 @@ struct TitrePrincipal: View {
                         .font(.title)
                         .bold()
                         .foregroundStyle(.vcPrimary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 80)
+
             }
             .frame(minWidth: 0,
                    maxWidth: .infinity,
                    minHeight: 0,
                    maxHeight: .infinity
             )
-            .aspectRatio(4/2 , contentMode: .fit)
+            .aspectRatio(4/3 , contentMode: .fit)
     }
 }
 
