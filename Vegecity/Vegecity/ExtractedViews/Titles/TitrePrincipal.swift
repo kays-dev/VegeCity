@@ -24,7 +24,12 @@ struct TitrePrincipal: View {
                         .bold()
                         .foregroundStyle(.vcPrimary)
             }
-            .frame(height: 200)
+            .frame(minWidth: 0,
+                   maxWidth: .infinity,
+                   minHeight: 0,
+                   maxHeight: .infinity
+            )
+            .aspectRatio(4/2 , contentMode: .fit)
     }
 }
 

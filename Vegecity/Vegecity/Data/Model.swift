@@ -27,12 +27,8 @@ struct Activite: Identifiable, Hashable {
     let niveau: Int //1, 2 ou 3
     let accessibilite: Bool
     let inscription: Bool
-    let option: Problematique
-    
-    static let activites: [Activite] = [
-        Activite(nom: "Arts et Métiers", cp: 75003, description: "Atelier d'initiation aux techniques de plantation de différente variétés de plantes", date: Date(), image: "arts_et_metiers", nbrPlace: 12, niveau: 2, accessibilite: false, inscription: false, option: Problematique.init(nom: "inondation", icone: "drop.circle")),
-        Activite(nom: "Montgallet", cp: 75012, description: "Potager partagé municipal", date: Date(), image: "montgallet", nbrPlace: 9, niveau: 1, accessibilite: true, inscription: false, option: Problematique.init(nom: "jardinage", icone: "leaf.fill"))
-    ]
+
+    let option: [Problematique]
 }
 
 
@@ -50,4 +46,10 @@ struct Problematique: Identifiable, Hashable  {
     let icone: String
 }
 
-
+struct Groupe: Identifiable, Hashable {
+    let id = UUID()
+    let activite: Activite
+    let membres: [Membre]
+    let messagesRecus: [String]
+    let messagesEnvoyes: [String]
+}
