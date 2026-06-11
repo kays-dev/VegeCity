@@ -29,6 +29,8 @@ struct Activite: Identifiable, Hashable {
     let inscription: Bool
 
     let option: [Problematique]
+    
+  
 }
 
 
