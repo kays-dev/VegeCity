@@ -23,7 +23,7 @@ struct BarreDeRecherche: View {
                 .foregroundStyle(.vcSearchbarText)
                 .padding(.horizontal, 20)
             }
-            .frame(height: 52)
+            .frame(height: 42)
     }
 }
 

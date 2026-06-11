@@ -47,6 +47,12 @@ struct Groupe: Identifiable, Hashable {
     let id = UUID()
     let activite: Activite
     let membres: [Membre]
-    let messagesRecus: [String]
-    let messagesEnvoyes: [String]
+    let messages: [Message]
+}
+
+struct Message: Identifiable, Hashable {
+    let id = UUID()
+    let membre : Membre
+    let detail : String
+    let dateEnvoi: DateComponents
 }

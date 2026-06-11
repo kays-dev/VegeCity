@@ -10,15 +10,25 @@ import SwiftUI
 struct EcranGroupes: View {
     var listeMembres : String
     
+    @State private var rechercheGroupe : String = ""
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 32){
+            
+            HStack{
+                BarreDeRecherche()
+                //            BarreDeRecherche(saisie: $rechercheGroupe)
+                
+                ArchiveGroupes()
+            }
+            
             VStack(alignment: .leading, spacing: 16){
                 ForEach(groupes){ groupe in
                     
                     CarteGroupes(image: groupe.activite.image, titre: groupe.activite.nom,
                                  arrondissement: getArrondissement(cp: groupe.activite.cp),
                                  membres: groupe.membres.map{"@"+$0.pseudo},
-                                 dernierMessage: groupe.messagesRecus.last ?? "")
+                                 dernierMessage: groupe.messages.last?.detail ?? "")
                 }
             }
             

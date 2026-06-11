@@ -14,9 +14,12 @@ struct ArchiveGroupes: View {
                 .fill(.vcIconBg)
                 .overlay(alignment: .center){
                     Image(systemName: "archivebox")
+                        .padding(.vertical, 16)
                         .foregroundStyle(.vcIcon)
                         .font(.default)
+                        .aspectRatio(1/1 , contentMode: .fill)
                 }
+                .frame(height: 42)
         }
     }
 }
