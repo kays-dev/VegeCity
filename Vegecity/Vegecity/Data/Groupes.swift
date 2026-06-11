@@ -73,7 +73,7 @@ let groupe2 = Groupe(activite: activite2, membres: [pousse, chlorophylle, jardin
     Message(membre: jardinier, detail: "Et si on proposait aussi des petites plantations supplémentaires d'espèces locales sèche-résistantes ? Avec le réchauffement, mieux vaut choisir maintenant ce qui tiendra dans 20 ans 🌿", dateEnvoi: DateComponents(timeZone: .autoupdatingCurrent, year: 2026, month: 06, day: 11, hour: 12, minute: 10))
 ])
 
-let groupes = [
+var groupes = [
     groupe1,
     groupe2
 ]

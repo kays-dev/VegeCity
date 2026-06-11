@@ -30,6 +30,13 @@ struct ProfilDiscussion: View {
 
             Image(photoProfil)
                 .resizable()
+                .scaledToFill()
+                .frame(minWidth: 0,
+                       maxWidth: .infinity,
+                       minHeight: 0,
+                       maxHeight: .infinity
+                )
+                .aspectRatio(1/1 , contentMode: .fill)
                 .clipShape(
                     UnevenRoundedRectangle(topLeadingRadius: topLeading, bottomLeadingRadius: bottomLeading, bottomTrailingRadius: bottomTrailing, topTrailingRadius: topTrailing)
                 )

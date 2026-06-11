@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct EcranGroupes: View {
-    var listeMembres : String
-    
     @State private var rechercheGroupe : String = ""
+    
+    @State private var tousGroupes : [Groupe] = groupes
     
     var body: some View {
         VStack(alignment: .leading, spacing: 32){
@@ -23,12 +23,15 @@ struct EcranGroupes: View {
             }
             
             VStack(alignment: .leading, spacing: 16){
-                ForEach(groupes){ groupe in
-                    
-                    CarteGroupes(image: groupe.activite.image, titre: groupe.activite.nom,
-                                 arrondissement: getArrondissement(cp: groupe.activite.cp),
-                                 membres: groupe.membres.map{"@"+$0.pseudo},
-                                 dernierMessage: groupe.messages.last?.detail ?? "")
+                ForEach($tousGroupes){ $groupe in
+                    NavigationLink {
+                        EcranDiscussion(groupe: $groupe)
+                    } label : {
+                        CarteGroupes(image: groupe.activite.image, titre: groupe.activite.nom,
+                                     arrondissement: getArrondissement(cp: groupe.activite.cp),
+                                     membres: groupe.membres.map{"@"+$0.pseudo},
+                                     dernierMessage: groupe.messages.last?.detail ?? "")
+                    }
                 }
             }
             
@@ -42,5 +45,5 @@ struct EcranGroupes: View {
 }
 
 #Preview {
-    EcranGroupes(listeMembres: "groupe1.membres.ma")
+    EcranGroupes()
 }
