@@ -1,15 +1,15 @@
 //
-//  CarteLieu.swift
-//  CarnetDeVoyage
+//  CardDetailView.swift
+//  Vegecity
 //
-//  Created by Apprenant160 on 04/06/2026.
+//  Created by Apprenant160 on 11/06/2026.
 //
 
 import SwiftUI
 
-struct CardListView: View {
+struct CardDetailView: View {
     
-    let activite: Activite
+    let activites: [Activite].
     
     var body: some View {
         
@@ -56,8 +56,9 @@ struct CardListView: View {
         .padding(16)
         .shadow(color: .vcCardShadow, radius: 0280)
     }
-}
+    }
+
 
 #Preview {
-    CardListView(activite: Activite.activites)
+    CardDetailView(activite: [Activite(nom: "Arts et Métiers", cp: 75003, description: "Atelier d'initiation aux techniques de plantation de différente variétés de plantes", date: Date(), image: "arts_et_metiers", nbrPlace: 12, niveau: 2, accessibilite: false, inscription: false, option: Problematique.init(nom: "inondation", icone: "drop.circle"))])
 }

@@ -34,7 +34,6 @@ struct Activite: Identifiable, Hashable {
 }
 
 
-
 struct Membre: Identifiable, Hashable {
     let id = UUID()
     let pseudo: String
