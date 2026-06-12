@@ -20,7 +20,8 @@ struct Activite: Identifiable, Hashable {
     let id = UUID()
     let nom: String // nom du lieu
     let cp: Int // code postale pour definir les arrondissement
-    let description: String // description lieu : potager partagé
+    let desc_lieu: String
+    let desc_activite: String // description lieu : potager partagé
     let date: Date //activité  date, heure? de l'activité
     let image: String // image de l'activité
     let nbrPlace: Int // nombre de place max
@@ -29,8 +30,7 @@ struct Activite: Identifiable, Hashable {
     let inscription: Bool
 
     let option: [Problematique]
-    
-  
+
 }
 
 
