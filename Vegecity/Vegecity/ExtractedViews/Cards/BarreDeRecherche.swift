@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct BarreDeRecherche: View {
-    @State private var saisie : String = ""
+    @Binding var saisie : String
+    
+    var texte : String = ""
     
     var body: some View {
         Capsule()
@@ -17,7 +19,7 @@ struct BarreDeRecherche: View {
                 HStack(spacing: 12){
                     Image(systemName: "magnifyingglass")
                     
-                    TextField("Rechercher un groupe", text: $saisie, axis: .vertical)
+                    TextField(texte, text: $saisie, axis: .vertical)
                         .font((.custom("IosevkaCharonMono-Medium", size: 17, relativeTo: .callout)))
                 }
                 .foregroundStyle(.vcSearchbarText)
@@ -28,5 +30,14 @@ struct BarreDeRecherche: View {
 }
 
 #Preview {
-    BarreDeRecherche()
+    struct PreviewBDR : View {
+        @State private var saisie = ""
+        
+        var body : some View {
+            BarreDeRecherche(saisie: $saisie)
+        }
+    }
+    
+    return PreviewBDR()
+
 }

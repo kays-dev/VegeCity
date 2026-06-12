@@ -43,11 +43,12 @@ struct Problematique: Identifiable, Hashable  {
     let icone: String
 }
 
+
 struct Groupe: Identifiable, Hashable {
     let id = UUID()
     let activite: Activite
     let membres: [Membre]
-    let messages: [Message]
+    var messages: [Message]
 }
 
 struct Message: Identifiable, Hashable {

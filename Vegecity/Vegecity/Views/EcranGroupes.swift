@@ -12,20 +12,21 @@ struct EcranGroupes: View {
     
     @State private var tousGroupes : [Groupe] = groupes
     
+    @State private var groupeMessages : [Message] = []
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 32){
+        VStack(alignment: .leading, spacing: 24){
             
             HStack{
-                BarreDeRecherche()
-                //            BarreDeRecherche(saisie: $rechercheGroupe)
+                BarreDeRecherche(saisie: $rechercheGroupe, texte: "Rechercher un groupe")
                 
-                ArchiveGroupes()
+                BoutonGroupe(icone: "archivebox")
             }
             
             VStack(alignment: .leading, spacing: 16){
                 ForEach($tousGroupes){ $groupe in
                     NavigationLink {
-                        EcranDiscussion(groupe: $groupe)
+                        EcranDiscussion(groupe: $groupe, groupeMessages: $groupeMessages)
                     } label : {
                         CarteGroupes(image: groupe.activite.image, titre: groupe.activite.nom,
                                      arrondissement: getArrondissement(cp: groupe.activite.cp),

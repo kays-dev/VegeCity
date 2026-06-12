@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct ArchiveGroupes: View {
+struct BoutonGroupe: View {
+    var icone : String
+    
     var body: some View {
         HStack{
             Circle()
                 .fill(.vcIconBg)
                 .overlay(alignment: .center){
-                    Image(systemName: "archivebox")
-                        .padding(.vertical, 16)
+                    Image(systemName: icone)
                         .foregroundStyle(.vcIcon)
-                        .font(.default)
-                        .aspectRatio(1/1 , contentMode: .fill)
+                        .font(.title3)
                 }
                 .frame(height: 42)
         }
@@ -25,5 +25,5 @@ struct ArchiveGroupes: View {
 }
 
 #Preview {
-    ArchiveGroupes()
+    BoutonGroupe(icone: "archivebox")
 }
