@@ -9,55 +9,111 @@ import SwiftUI
 
 struct CardListView: View {
     
-    let activite: Activite
+    enum Niveau: String, CaseIterable, Identifiable {
+        var id: String { self.rawValue }
+        case un = "Niveau 1"
+        case deux = "Niveau 2"
+        case trois = "Niveau 3"
+    }
+    
+    @State private var choiceSelected = Niveau.un.rawValue
+    @State private var searchText = ""
+    @State private var isTouch = false
     
     var body: some View {
         
-        HStack() {
-            Image(activite.image)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 100, height: 100)
-                .cornerRadius(5)
-                .padding()
+        NavigationStack {
             
-            VStack(alignment: .leading, spacing: 0) {
-                Text(activite.nom)
-                    .font(.headline)
-                Text(activite.description)
-                    .font(.subheadline)
-                Text(activite.inscription ? "inscription" : "libre d'accés")
-                    .foregroundStyle(activite.inscription ? Color.red : Color.green)
-                    .padding(.vertical, 5)
-                    .font(.caption)
+            VStack(spacing: 24) {
                 
-                HStack {
-                    Text("nombre places : " + activite.nbrPlace.description)
-                        .font(.caption)
-                        .foregroundStyle(Color.orange)
-                        .fontWeight(.bold)
-                        .padding(.vertical, 20)
-                        .padding(.horizontal, 0)
-                        .frame(maxWidth: .infinity,maxHeight: 100, alignment: .topLeading)
+                BarreDeRecherche()
+                    .padding(.horizontal, 42)
+                
+                HStack(spacing: 32) {
                     
-                    HStack {
-                        // Image(systemName: "figure.and.child.holdinghands")
-                        Image(systemName: "figure.roll")
-                            .font(.title2)
-                        // Image(systemName: "allergens.fill")
-                    } .padding()
+                    Picker("Picker", selection: $choiceSelected) {
+                        ForEach(Niveau.allCases) { niveau in
+                            Text(niveau.rawValue).tag(niveau.rawValue)
+                        }
+                    }
+                    .padding(8)
+                    .background{
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(.vcCardBg)
+                            .stroke(.vcCardBorder, lineWidth: 1)
+                            .shadow(color: .vcCardShadow, radius: 8, x:0, y:2)
+                        
+                    }
+                    .tint(.vcBodyPrimary)
+                    
+                    
+                    Button("Accessible") {
+                        isTouch.toggle()
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 16)
+                    .background{
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(isTouch ? .vcSecondary : .vcCardBg)
+                            .stroke(.vcCardBorder, lineWidth: 1)
+                            .shadow(color: .vcCardShadow, radius: 8, x:0, y:2)
+                        
+                    }
+                    .tint(.vcBodyPrimary)
+                    
+                }.frame(maxWidth: .infinity, alignment: .center)
+                
+                
+                ForEach(activites) { activite in
+                    
+                    HStack() {
+                        
+                        Image(activite.image)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 100, height: 100)
+                            .cornerRadius(10)
+                            .padding(2)
+                        
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text(activite.nom)
+                                .font(.headline)
+                            Text(activite.desc_activite)
+                                .font(.subheadline)
+                                .padding(.vertical, 5)
+                                .font(.caption)
+                            Image(systemName: "figure.roll")
+                                .font(.title2 )
+                                .padding(.vertical, 0)
+                            
+                            HStack {
+                                Text(activite.nbrPlace > 0 ?  "Libre" : "Complet")
+                                    .font(.subheadline)
+                                    .foregroundStyle(Color.orange)
+                                    .padding(.vertical, 10)
+                                    .padding(.horizontal, 0)
+                                    .frame(maxWidth: .infinity,maxHeight: 100, alignment: .topLeading)
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity,maxHeight: 100, alignment: .topLeading)
+                        
+                        
+                    }
+                    .styleCarte()
+                    
                 }
-            }
-            .frame(maxWidth: .infinity,maxHeight: 100, alignment: .topLeading)
+                
+            }.padding(12)
+                .stylePage(photo: "menilmontant", titrePage: "Lieu d'activité")
+            
         }
-        .border(Color.vcCardBorder)
-        .background(.background.secondary)
-        .clipShape(.rect(cornerRadius: 20))
-        .padding(16)
-        .shadow(color: .vcCardShadow, radius: 0280)
+        
     }
+    
 }
 
+
 #Preview {
-    CardListView(activite: Activite.activites)
+    CardListView()
 }
