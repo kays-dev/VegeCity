@@ -10,12 +10,14 @@ import SwiftUI
 struct StylePage: ViewModifier {
     var photo : String
     var titrePage : String
-
+    
     func body(content: Content) -> some View {
-        ZStack(alignment: .top){
-            TitrePrincipal(photo: photo, titre: titrePage)
-                .ignoresSafeArea()
-            
+        NavigationStack{
+            ZStack(alignment: .top){
+                TitrePrincipal(photo: photo, titre: titrePage)
+                    .ignoresSafeArea()
+                
+                
                 ScrollView(.vertical){
                     VStack(alignment: .leading, spacing: 32){
                         
@@ -37,7 +39,7 @@ struct StylePage: ViewModifier {
             
         }
     }
-
+}
 
 extension View {
     func stylePage(photo : String, titrePage : String)  -> some View {

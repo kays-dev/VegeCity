@@ -8,12 +8,22 @@
 import SwiftUI
 
 struct BarreDeRecherche: View {
+    @State private var saisie : String = ""
+    var texte: String = ""
     var body: some View {
-        HStack {
-            Image(systemName: "search")
-            
-            
-        }
+        Capsule()
+            .fill(.vcSearchbarBg)
+            .overlay(alignment: .leading){
+                HStack(spacing: 12){
+                    Image(systemName: "magnifyingglass")
+                    
+                    TextField(texte, text: $saisie, axis: .vertical)
+                        .font((.custom("IosevkaCharonMono-Medium", size: 17, relativeTo: .callout)))
+                }
+                .foregroundStyle(.vcSearchbarText)
+                .padding(.horizontal, 20)
+            }
+            .frame(height: 42)
     }
 }
 
