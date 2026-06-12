@@ -17,10 +17,13 @@ struct PlantDetails: View {
                 ForEach(exemples) { PlantCard(plante: $0) }
                     
                 
-            }.stylePage(photo: "JardinierReveur", titrePage: "Details...")
+            }
+            .stylePage(photo: "JardinierReveur", titrePage: "Details...")
+        
         
         }
-}
+        
+        }
 
 #Preview {
     PlantDetails()
