@@ -18,7 +18,7 @@ struct MessageMembre: View {
             ProfilDiscussion(typeMembre: .vcCardBorder, photoProfil: imageProfil, topLeading: 24, bottomLeading: 0, bottomTrailing: 24, topTrailing: 0, paddingTableau: [.top, .trailing])
                 .padding(.top, 19)
             
-            ConteneurMessage(pseudo: pseudo, alignementPseudo: .leading, message: message, topLeading: 0, bottomLeading: 24, bottomTrailing: 16, topTrailing: 16, fillConteneur: .vcCardBg, strokeConteneur: .vcCardBorder)
+            ConteneurMessage(pseudo: pseudo, alignementPseudo: .leading, opacityPseudo: 12, message: message, topLeading: 0, bottomLeading: 24, bottomTrailing: 16, topTrailing: 16, fillConteneur: .vcCardBg, strokeConteneur: .vcCardBorder)
             
             HeureMessage(dateMessage: dateMessage)
                 .padding(.top, 19)

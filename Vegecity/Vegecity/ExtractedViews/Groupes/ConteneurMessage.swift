@@ -10,6 +10,7 @@ import SwiftUI
 struct ConteneurMessage: View {
     var pseudo : String
     var alignementPseudo : HorizontalAlignment
+    var opacityPseudo : Double
     
     var message : String
     
@@ -26,6 +27,7 @@ struct ConteneurMessage: View {
             Text("@\(pseudo)")
                 .font((.custom("IosevkaCharonMono-Regular", size: 12, relativeTo: .caption2)))
                 .foregroundStyle(.vcBodySecondary)
+                .opacity(opacityPseudo)
             
             Text("""
         \(message)
@@ -48,5 +50,5 @@ struct ConteneurMessage: View {
 }
 
 #Preview {
-    ConteneurMessage(pseudo: groupe1.messages[1].membre.pseudo, alignementPseudo: .leading, message: groupe1.messages[1].detail, topLeading: 0, bottomLeading: 24, bottomTrailing: 16, topTrailing: 16, fillConteneur: .vcCardBg, strokeConteneur: .vcCardBorder)
+    ConteneurMessage(pseudo: groupe1.messages[1].membre.pseudo, alignementPseudo: .leading, opacityPseudo: 12, message: groupe1.messages[1].detail, topLeading: 0, bottomLeading: 24, bottomTrailing: 16, topTrailing: 16, fillConteneur: .vcCardBg, strokeConteneur: .vcCardBorder)
 }

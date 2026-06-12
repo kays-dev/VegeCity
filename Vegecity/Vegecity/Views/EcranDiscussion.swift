@@ -14,13 +14,14 @@ struct EcranDiscussion: View {
     
     var maintenant = Date.now
     
+    @State private var messageTape : String = ""
+    
     func ajoutMessage(envoye : String) -> Void {
         groupeMessages.append(
             Message(membre: utilisateur, detail: envoye, dateEnvoi: Calendar.autoupdatingCurrent.dateComponents([.year, .month, .day, .hour, .minute], from: maintenant) ))
+        
+        messageTape = ""
     }
-    
-    @State private var messageTape : String = ""
-    
     
     var body: some View {
         ZStack(alignment: .top){
@@ -66,7 +67,7 @@ struct EcranDiscussion: View {
             }
             
         }
-        .toolbar(.hidden)
+        .navigationTitle("\(groupe.activite.nom)")
         
     }
 }

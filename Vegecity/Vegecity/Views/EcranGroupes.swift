@@ -12,8 +12,6 @@ struct EcranGroupes: View {
     
     @State private var tousGroupes : [Groupe] = groupes
     
-    @State private var groupeMessages : [Message] = []
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 24){
             
@@ -23,10 +21,10 @@ struct EcranGroupes: View {
                 BoutonGroupe(icone: "archivebox")
             }
             
-            VStack(alignment: .leading, spacing: 16){
+            LazyVStack(alignment: .leading, spacing: 16){
                 ForEach($tousGroupes){ $groupe in
                     NavigationLink {
-                        EcranDiscussion(groupe: $groupe, groupeMessages: $groupeMessages)
+                        EcranDiscussion(groupe: $groupe, groupeMessages: $groupe.messages)
                     } label : {
                         CarteGroupes(image: groupe.activite.image, titre: groupe.activite.nom,
                                      arrondissement: getArrondissement(cp: groupe.activite.cp),
