@@ -8,15 +8,21 @@
 import SwiftUI
 
 struct MemberView: View {
+    
+    let membre: [Membre] = membres
+    
     var body: some View {
         
-        Image(.composteurDu19)
-            .resizable()
-            .scaledToFill()
-            .frame(width: 70, height: 70)
-            .aspectRatio(1/1 , contentMode: .fill)
-            .clipShape(.circle)
+        ForEach(membres) { membre in
+            Image(membre.image)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 50, height: 50)
+                .aspectRatio(1/1 , contentMode: .fill)
+                .clipShape(.circle)
+        }
     }
+    
 }
 
 #Preview {
