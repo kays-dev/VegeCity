@@ -9,14 +9,16 @@ import SwiftUI
 
 struct BoutonGroupe: View {
     var icone : String
+    var foreground : Color
+    var fillIcone : Color
     
     var body: some View {
         HStack{
             Circle()
-                .fill(.vcIconBg)
+                .fill(fillIcone)
                 .overlay(alignment: .center){
                     Image(systemName: icone)
-                        .foregroundStyle(.vcIcon)
+                        .foregroundStyle(foreground)
                         .font(.title3)
                 }
                 .frame(height: 42)
@@ -25,5 +27,5 @@ struct BoutonGroupe: View {
 }
 
 #Preview {
-    BoutonGroupe(icone: "archivebox")
+    BoutonGroupe(icone: "archivebox", foreground: .vcIcon, fillIcone: .vcIconBg)
 }

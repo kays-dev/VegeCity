@@ -31,7 +31,7 @@ struct EcranDiscussion: View {
             ScrollViewReader { basDePage in
                 ScrollView(.vertical){
                     
-                    VStack(alignment: .leading, spacing: 24){
+                    LazyVStack(alignment: .leading, spacing: 24){
                         ForEach(groupeMessages){ message in
                             if message.membre != utilisateur {
                                 MessageMembre(pseudo: message.membre.pseudo, imageProfil: message.membre.image, message: message.detail, dateMessage: message.dateEnvoi).id(message.id)
@@ -41,34 +41,35 @@ struct EcranDiscussion: View {
                             }
                             
                         }
-                        .onChange(of: groupeMessages) {
-                            basDePage.scrollTo(1)
-                        }
-                        
+                    }
+                    .safeAreaInset(edge: .bottom) {
                         HStack(alignment: .top){
                             BarreMessage(messageTape: $messageTape)
                             
                             Button {
                                 ajoutMessage(envoye: messageTape)
                             } label: {
-                                BoutonGroupe(icone: "paperplane.fill")
+                                BoutonGroupe(icone: "paperplane.fill", foreground: .vcIcon, fillIcone: messageTape.isEmpty ?  .vcSearchbarBg :.accent)
                             }
-
+                            .disabled(messageTape.isEmpty)
+                            
                         }.id(1)
-                        
+                            .padding(.top, 12)
                     }
-                    
+                    .padding(.horizontal)
+                    .scrollIndicators(.hidden)
+                    .onAppear{
+                        basDePage.scrollTo(1)
+                    }
+                    .onChange(of: groupeMessages){
+                        basDePage.scrollTo(1)
+                    }
                 }
-                .padding(.horizontal)
-                .scrollIndicators(.hidden)
-                .onAppear{
-                    basDePage.scrollTo(1)
-                }
+                
             }
+            .navigationTitle("\(groupe.activite.nom)")
             
         }
-        .navigationTitle("\(groupe.activite.nom)")
-        
     }
 }
 

@@ -40,7 +40,7 @@ struct ConteneurMessage: View {
             .background{
                 UnevenRoundedRectangle(topLeadingRadius: topLeading, bottomLeadingRadius: bottomLeading, bottomTrailingRadius: bottomTrailing, topTrailingRadius: topTrailing)
                     .fill(fillConteneur)
-                    .stroke(strokeConteneur, lineWidth: 1)
+                    .stroke(strokeConteneur, lineWidth: 0.5)
                     .frame(width: .infinity)
             }
             .opacity(0.8)

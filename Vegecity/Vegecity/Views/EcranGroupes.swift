@@ -18,7 +18,7 @@ struct EcranGroupes: View {
             HStack{
                 BarreDeRecherche(saisie: $rechercheGroupe, texte: "Rechercher un groupe")
                 
-                BoutonGroupe(icone: "archivebox")
+                BoutonGroupe(icone: "archivebox", foreground: .vcIcon, fillIcone: .vcIconBg)
             }
             
             LazyVStack(alignment: .leading, spacing: 16){

@@ -19,7 +19,6 @@ struct MessageUtilisateur: View {
                 .padding(.top, 20)
             
             ConteneurMessage(pseudo: pseudo, alignementPseudo: .trailing, opacityPseudo: 0, message: message, topLeading: 16, bottomLeading: 16, bottomTrailing: 24, topTrailing: 0, fillConteneur: .vcCardMessage, strokeConteneur: .vcPrimary)
-
             
             ProfilDiscussion(typeMembre: .vcCardIcon, photoProfil: imageProfil, topLeading: 0, bottomLeading: 24, bottomTrailing: 0, topTrailing: 24, paddingTableau: [.top, .leading])
                 .padding(.top, 20)
