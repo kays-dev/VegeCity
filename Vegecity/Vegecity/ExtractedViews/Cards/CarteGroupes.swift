@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct CarteGroupes: View {
+    var image : String
     var titre : String
-    var arrondissment : String
-    var membres : String
+    var arrondissement : String
+    var membres : [String]
     var dernierMessage : String
     
     var body: some View {
         HStack(alignment: .top){
-            Image(.defaultCover)
+            Image(image)
                 .resizable()
                 .scaledToFill()
                 .overlay{
@@ -32,42 +33,48 @@ struct CarteGroupes: View {
             
             VStack(alignment: .leading){
                 Text(titre)
-                    .font(.title2)
+                    .font((.custom("IosevkaCharonMono-Bold", size: 20, relativeTo: .title2)))
+                    .foregroundStyle(.vcBodyPrimary)
                 
                 HStack(spacing: 12){
                     HStack(spacing: 2){
                         Image(systemName: "map").symbolVariant(.fill)
-                        Text(arrondissment)
+                        Text(arrondissement)
                     }
                     
                     HStack(spacing: 2){
                         Image(systemName: "person.2").symbolVariant(.fill)
-                        Text(membres)
+                        Text(membres.joined(separator: ", "))
                             .lineLimit(1)
                     }
                 }
-                .font(.caption)
+                .font((.custom("IosevkaCharonMono-Regular", size: 14, relativeTo: .caption)))
                 .foregroundStyle(.vcBodySecondary)
                 
                 Spacer()
                 
                 Text(dernierMessage)
+                    .font((.custom("IosevkaCharonMono-Italic", size: 17, relativeTo: .footnote)))
                     .lineLimit(1)
-                    .italic()
                     .foregroundStyle(.vcBodySecondary)
-                    .padding(.trailing, 56)
+                    .padding(.trailing, 48)
             }
         }
-        .frame(height: 100)
+        .frame(height: 80)
         .styleCarte()
         .overlay(alignment: .bottomTrailing){
                 Image(.feuille)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 32)
                 .padding(.trailing, 16)
+                .opacity(0.8)
+
         }
         
     }
 }
 
 #Preview {
-    CarteGroupes(titre: "Potager des Oiseaux", arrondissment: "3e", membres: "@PousseVerte75, @PlanetteVerte", dernierMessage: "Parfait. Et on en profite pour repiquer les jeunes plants dans la parcelle A, elle est prête depuis mardi dernier 🌱")
+    CarteGroupes(image: "defaultCover",titre: "Potager des Oiseaux", arrondissement: "3e", membres: ["@PousseVerte75", "@PlanetteVerte"], dernierMessage: "Parfait. Et on en profite pour repiquer les jeunes plants dans la parcelle A, elle est prête depuis mardi dernier 🌱")
 }

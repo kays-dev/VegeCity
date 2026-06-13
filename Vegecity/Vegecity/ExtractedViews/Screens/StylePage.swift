@@ -10,20 +10,16 @@ import SwiftUI
 struct StylePage: ViewModifier {
     var photo : String
     var titrePage : String
-
+    
     func body(content: Content) -> some View {
-        ZStack(alignment: .top){
-            TitrePrincipal(photo: photo, titre: titrePage)
-                .ignoresSafeArea()
-            
+        NavigationStack{
+            ZStack(alignment: .top){
+                TitrePrincipal(photo: photo, titre: titrePage)
+                    .ignoresSafeArea()
+                
                 ScrollView(.vertical){
-                    VStack(alignment: .leading, spacing: 32){
-                        
-                        content
-                    }
-                    .padding(.top, 40)
-                    .padding(.horizontal, 20)
-                    .padding(.bottom, 28)
+                    
+                    content
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .mask(RoundedRectangle(cornerRadius: 36))
@@ -34,9 +30,9 @@ struct StylePage: ViewModifier {
                 .padding(.top, 16*16)
                 .ignoresSafeArea()
             }
-            
         }
     }
+}
 
 
 extension View {
@@ -47,9 +43,12 @@ extension View {
 
 struct ExemplePage: View {
     var body: some View {
-        VStack{
-            CarteGroupes(titre: "Potager aux Oiseaux", arrondissment: "3e", membres: "@PlanetteVerte", dernierMessage: "Parfait. Et on en profite pour repiquer les jeunes plants dans la parcelle A, elle est prête depuis mardi dernier 🌱")
+        VStack(alignment: .leading, spacing: 32){
+            CarteGroupes(image: "defaultCover",titre: "Potager aux Oiseaux", arrondissement: "3e", membres: ["@PousseVerte75", "@PlanetteVerte"], dernierMessage: "Parfait. Et on en profite pour repiquer les jeunes plants dans la parcelle A, elle est prête depuis mardi dernier 🌱")
         }
+        .padding(.top, 40)
+        .padding(.horizontal, 20)
+        .padding(.bottom, 28)
         .stylePage(photo: "defaultCover", titrePage: "Ceci est le titre de la page")
         
     }
