@@ -12,17 +12,32 @@ struct EcranGroupes: View {
     
     @State private var tousGroupes : [Groupe] = groupes
     
+    @State private var resultats : [Groupe] = []
+    
+    @State private var archives : Bool = false
+    
+    private func appliquerFiltres() {
+        var liste = tousGroupes
+        
+        if archives {
+            liste = liste.filter{ $0.archive }
+        } else {
+            liste = liste.filter{ $0.archive == false}
+        }
+        
+        if !rechercheGroupe.isEmpty {
+            liste = liste.filter { $0.activite.nom.localizedCaseInsensitiveContains(rechercheGroupe) }
+        }
+        
+        resultats = liste
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 24){
             
-            HStack{
-                BarreDeRecherche(saisie: $rechercheGroupe, texte: "Rechercher un groupe")
-                
-                BoutonGroupe(icone: "archivebox", foreground: .vcIcon, fillIcone: .vcIconBg)
-            }
-            
             LazyVStack(alignment: .leading, spacing: 16){
-                ForEach($tousGroupes){ $groupe in
+                ForEach($resultats){ $groupe in
+                    
                     NavigationLink {
                         EcranDiscussion(groupe: $groupe, groupeMessages: $groupe.messages)
                     } label : {
@@ -31,7 +46,39 @@ struct EcranGroupes: View {
                                      membres: groupe.membres.map{"@"+$0.pseudo},
                                      dernierMessage: groupe.messages.last?.detail ?? "")
                     }
+                    .contextMenu{
+                        Button(role: .destructive){
+                            groupe.archive = true
+                        } label : {
+                            Label("Archiver", systemImage: "archivebox")
+                        }
+                    }
+                    .onChange(of: groupe.archive) {
+                        if let index = tousGroupes.firstIndex(where: { $0.id == groupe.id }) {
+                            tousGroupes[index].archive = groupe.archive
+                        }
+                        appliquerFiltres()
+                    }
                 }
+            }
+            .onAppear{
+                appliquerFiltres()
+            }
+            .onChange(of: rechercheGroupe) {
+                appliquerFiltres()
+            }
+            .safeAreaInset(edge: .top) {
+                HStack{
+                    BarreDeRecherche(saisie: $rechercheGroupe, texte: "Rechercher un groupe")
+                    
+                    Button{
+                        archives.toggle()
+                        appliquerFiltres()
+                    } label: {
+                        BoutonGroupe(icone: "archivebox", foreground: .vcIcon, fillIcone: archives ? .vcCardIcon : .vcIconBg)
+                    }
+                }
+                .padding(.bottom)
             }
             
         }

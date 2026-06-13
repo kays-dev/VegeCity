@@ -77,3 +77,27 @@ var groupes = [
     groupe1,
     groupe2
 ]
+
+//Jours
+func getFrenchDay(format : String) -> String {
+    
+    switch format {
+    case "Mon" :
+        return "Lun"
+    case "Tue" :
+        return "Mar"
+    case "Wed" :
+        return "Mer"
+    case "Thu" :
+        return "Jeu"
+    case "Fri" :
+        return "Ven"
+    case "Sat" :
+        return "Sam"
+    case "Sun" :
+        return "Dim"
+        
+    default:
+        return " "
+    }
+}

@@ -16,7 +16,7 @@ struct EcranDiscussion: View {
     
     @State private var messageTape : String = ""
     
-    func ajoutMessage(envoye : String) -> Void {
+    private func ajoutMessage(envoye : String) -> Void {
         groupeMessages.append(
             Message(membre: utilisateur, detail: envoye, dateEnvoi: Calendar.autoupdatingCurrent.dateComponents([.year, .month, .day, .hour, .minute], from: maintenant) ))
         
@@ -56,8 +56,6 @@ struct EcranDiscussion: View {
                         }.id(1)
                             .padding(.top, 12)
                     }
-                    .padding(.horizontal)
-                    .scrollIndicators(.hidden)
                     .onAppear{
                         basDePage.scrollTo(1)
                     }
@@ -65,7 +63,8 @@ struct EcranDiscussion: View {
                         basDePage.scrollTo(1)
                     }
                 }
-                
+                .scrollIndicators(.hidden)
+                .padding(.horizontal)
             }
             .navigationTitle("\(groupe.activite.nom)")
             

@@ -57,14 +57,19 @@ struct CarteGroupes: View {
                     .font((.custom("IosevkaCharonMono-Italic", size: 17, relativeTo: .footnote)))
                     .lineLimit(1)
                     .foregroundStyle(.vcBodySecondary)
-                    .padding(.trailing, 56)
+                    .padding(.trailing, 48)
             }
         }
-        .frame(height: 100)
+        .frame(height: 80)
         .styleCarte()
         .overlay(alignment: .bottomTrailing){
                 Image(.feuille)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 32)
                 .padding(.trailing, 16)
+                .opacity(0.8)
+
         }
         
     }

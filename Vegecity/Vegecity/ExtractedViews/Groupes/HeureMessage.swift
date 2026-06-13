@@ -13,7 +13,12 @@ struct HeureMessage: View {
     func getToDateFormat(dateComp: DateComponents) -> String? {
         let thisDate = Calendar.current.date(from: dateComp)
 
-        let newDate = thisDate?.formatted(Date.FormatStyle().weekday(.abbreviated))
+        var newDate = " "
+        
+        if let formatting = thisDate?.formatted(Date.FormatStyle().weekday(.abbreviated)){
+            
+           newDate = getFrenchDay(format: formatting)
+        }
         
         return newDate
     }
