@@ -25,11 +25,11 @@ struct PlantType: Identifiable, Hashable {
 }
 
 let types = [
-    PlantType(nom: "Arbres",image: "tree.fill"),
+    PlantType(nom: "Arbres", image: "tree.circle"),
     PlantType(nom: "Arbustes", image: "tree.circle.fill"),
     PlantType(nom: "Vivaces herbacées", image: "camera.macro.circle.fill"),
-    PlantType(nom: "Graminées ornementales", image: "apple.meditate"),
+    PlantType(nom: "Graminées ornementales", image: "apple.meditate.circle.fill"),
     PlantType(nom: "Feuillages", image: "leaf.circle.fill"),
-    PlantType(nom: "Fruitiers", image: "leaf.fill"),
+    PlantType(nom: "Fruitiers", image: "leaf.circle"),
     PlantType(nom: "Legumes", image: "carrot.fill")
 ]

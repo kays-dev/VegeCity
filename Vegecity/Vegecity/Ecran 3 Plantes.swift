@@ -15,34 +15,52 @@ struct Ecran_3_Plantes: View {
     
     var body: some View {
         VStack{
-            
             VStack {
-                
-                VStack(alignment: .leading, spacing: 10) {
+                VStack(alignment: .leading, spacing: 20) {
                     BarreDeRecherche(texte: "Lierre, Pinus, fruitiers...")
+//                        .overlay(alignment: .trailing) {
+//                            Picker("Type", selection: $typeSelected) { ForEach(types) { type in
+//                                Text(type.nom)
+//                            }} .pickerStyle(.menu)
+//                                .background(.vcSearchbarBg)
+//                                .clipShape(.circle)
+//                            }
                     HStack() {
                             Picker("Type", selection: $typeSelected) { ForEach(types) { type in
                                 Text(type.nom)
                                 //Image(type.image)
-                            } 
+                            }
                         }
                         .pickerStyle(.menu)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(.accent)
+                        .background(.vcSearchbarBg)
                         .clipShape(.circle)
                         
                         ForEach(problematiques) { filtre in
                             Image(systemName: filtre.icone).font(.title)
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 //.foregroundStyle(.accent)
-                                
                         }
                     }
                     .foregroundStyle(.vcSearchbarText)
                     
-                    ForEach(resultats) { PlantCard(plante: $0) }
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Plante du jour")
+                            .font(.title3).bold()
+                            .foregroundStyle(.vcSearchbarText)
+                        ScrollView(.horizontal, showsIndicators: true) {
+                            HStack(spacing: 24) {
+                                ForEach(exemples) { plantOfTheDay in
+                                        PlantJour(plantJour: plantOfTheDay)
+                                }
+                            }
+                        } .styleCarte()
+                    }
+                    Text("Propositions...")
+                        .font(.title3).bold()
+                        .foregroundStyle(.vcSearchbarText)
                     
-               
+                  ForEach(resultats) { PlantCard(plante: $0) }
                 }
             }
             
