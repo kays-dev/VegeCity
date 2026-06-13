@@ -66,3 +66,29 @@ struct Message: Identifiable, Hashable {
     let detail : String
     let dateEnvoi: DateComponents
 }
+
+struct Information: Identifiable, Hashable {
+    let id = UUID()
+    
+    let titre: String
+    let source: String
+    
+    let type: TypeInformation
+    let problematiques: [Problematique]
+    
+    let resume: String
+    let description: String
+    
+    let link: String
+    
+    let transferSubject: String = "Partager cette ressource"
+    let transferMessage: String = "S'impliquer maintenant, c'est vivre dans une ville plus habitable demain 🌱"
+    let transferImage: String = "leaf.fill"
+}
+
+struct TypeInformation: Identifiable, Hashable  {
+    let id = UUID()
+    
+    let nom: String
+    let icone: String
+}
