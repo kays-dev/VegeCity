@@ -140,7 +140,7 @@ struct CardListView: View {
         .padding(.top, 40)
         .padding(.horizontal, 20)
         .padding(.bottom, 28)
-        .stylePage(photo: "gambetta", titrePage: "Lieu d'activité")
+        .stylePage(photo: "gambetta", titrePage: "Lieux à proximité")
     }
     
     private var filteredActivites: [Activite] {
