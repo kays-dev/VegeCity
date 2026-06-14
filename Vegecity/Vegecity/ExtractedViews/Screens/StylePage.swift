@@ -17,6 +17,7 @@ struct StylePage: ViewModifier {
                 TitrePrincipal(photo: photo, titre: titrePage)
                     .ignoresSafeArea()
                 
+
                 ScrollView(.vertical){
                     
                     content
@@ -29,6 +30,7 @@ struct StylePage: ViewModifier {
                 }
                 .padding(.top, 16*16)
                 .ignoresSafeArea()
+                .scrollIndicators(.hidden)
             }
         }
     }
@@ -44,7 +46,7 @@ extension View {
 struct ExemplePage: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 32){
-            Text("")
+
         }
         .padding(.top, 40)
         .padding(.horizontal, 20)

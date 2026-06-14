@@ -20,8 +20,7 @@ struct TitrePrincipal: View {
                     Rectangle().fill(.vcDarkerFilter)
                     
                     Text(titre)
-                        .font(.title)
-                        .bold()
+                    .font((.custom("IosevkaCharonMono-Bold", size: 32, relativeTo: .title)))
                         .foregroundStyle(.vcPrimary)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 80)

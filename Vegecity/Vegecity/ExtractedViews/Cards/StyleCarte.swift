@@ -22,6 +22,15 @@ struct StyleCarte: ViewModifier {
                 .shadow(color: .vcCardShadow, radius: 8, x:0, y:2)
             
         }
+        .overlay(alignment: .bottomTrailing){
+                Image(.feuille)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 32)
+                .padding(.trailing, 16)
+                .opacity(0.8)
+
+        }
     }
 }
 
