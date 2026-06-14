@@ -12,7 +12,7 @@ struct EcranGroupes: View {
     
     @State private var tousGroupes : [Groupe] = groupes
     
-    @State private var resultats : [Groupe] = []
+    @State private var resultats : [Groupe] = groupes
     
     @State private var archives : Bool = false
     
@@ -59,9 +59,6 @@ struct EcranGroupes: View {
                         appliquerFiltres()
                     }
                 }
-            }
-            .onAppear{
-                appliquerFiltres()
             }
             .onChange(of: rechercheGroupe) {
                 appliquerFiltres()
