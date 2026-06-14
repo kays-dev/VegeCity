@@ -93,5 +93,5 @@ struct ActiviteView: View {
 
 
 #Preview {
-    ActiviteView(activite: Activite(nom: "Arts et Métiers", cp: 75003, desc_lieu: "Espace privé mis à disposition", desc_activite: "Atelier d'initiation aux techniques de plantation de différente variétés de plantes.", date: Date(), image: "arts_et_metiers", nbrPlace: 1, niveau: 2, accessibilite: true, inscription: false, option: [Problematique(nom: "Îlots de chaleur", icone: "thermometer.sun.circle.fill"),Problematique(nom: "Inondations", icone: "drop.circle.fill"), Problematique(nom: "Jardinage", icone: "apple.meditate.circle.fill")]))
+    ActiviteView(activite: Activite(nom: "Arts et Métiers", cp: 75003, desc_lieu: "Espace privé mis à disposition", desc_activite: "Atelier d'initiation aux techniques de plantation de différente variétés de plantes.", date: Date(), image: "arts_et_metiers", nbrPlace: 1, niveau: 2, accessibilite: true, inscription: false, option: [ilotsChaleur, inondations, jardinage]))
 }

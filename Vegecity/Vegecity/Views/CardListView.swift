@@ -42,7 +42,7 @@ struct CardListView: View {
             
             VStack(spacing: 24) {
                 
-                BarreDeRecherche()
+                BarreDeRecherche(saisie: $searchText)
                     .padding(.horizontal, 42)
                 
                 HStack(spacing: 32) {
