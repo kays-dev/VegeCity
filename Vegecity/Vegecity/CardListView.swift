@@ -16,6 +16,7 @@ struct CardListView: View {
         case deux
         case trois
         
+        
         var name: String {
             switch self {
             case .all:
@@ -28,12 +29,14 @@ struct CardListView: View {
                 "Niveau 3"
             }
         }
+        
     }
     
     @State private var choiceSelected: Niveau = Niveau.all
     @State private var searchText = ""
     @State private var isTouch = false
     @State private var isVisible = false
+    @State private var saisie = ""
     
     
     var body: some View {
@@ -42,7 +45,7 @@ struct CardListView: View {
             
             VStack(spacing: 24) {
                 
-                BarreDeRecherche()
+                BarreDeRecherche(saisie: $saisie)
                     .padding(.horizontal, 42)
                 
                 HStack(spacing: 32) {
@@ -107,7 +110,7 @@ struct CardListView: View {
                                 Image(systemName: "figure.roll.circle")
                                     .font(.title2 )
                             }
-                           
+                            
                             HStack {
                                 Text(activite.nbrPlace > 0 ?  "Libre" : "Complet")
                                     .font(.subheadline)
@@ -151,11 +154,41 @@ struct CardListView: View {
             }
         })
         
+        temp = temp.filter({ activite in
+            switch saisie   {
+            case "75001" : return activite.cp == 75001
+            case "75002" : return activite.cp == 75002
+            case "75003" : return activite.cp == 75003
+            case "75004" : return activite.cp == 75004
+            case "75005" : return activite.cp == 75005
+            case "75006" : return activite.cp == 75006
+            case "75007" : return activite.cp == 75007
+            case "75008" : return activite.cp == 75008
+            case "75009" : return activite.cp == 75009
+            case "75010" : return activite.cp == 75010
+            case "75011" : return activite.cp == 75011
+            case "75012" : return activite.cp == 75012
+            case "75013" : return activite.cp == 75013
+            case "75014" : return activite.cp == 75014
+            case "75015" : return activite.cp == 75015
+            case "75016" : return activite.cp == 75016
+            case "75017" : return activite.cp == 75017
+            case "75018" : return activite.cp == 75018
+            case "75019" : return activite.cp == 75019
+            case "75020" : return activite.cp == 75020
+            default : return true
+            }
+            
+        }
+                           
+        )
         return temp
     }
+    
+    
 }
-
 
 #Preview {
     CardListView()
 }
+
