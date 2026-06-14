@@ -16,11 +16,10 @@ let media = TypeInformation(nom: "Média", icone: "newspaper")
 let procedure = TypeInformation(nom: "Procédure", icone: "list.bullet.clipboard")
 
 let typesInfo = [
-    biodiversite,
-    choixEspece,
-    jardinage,
-    secheresse,
-    crues,
-    inondations,
-    ilotsChaleur
+    forum,
+    guide,
+    application,
+    livre,
+    media,
+    procedure
 ]

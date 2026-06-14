@@ -34,14 +34,13 @@ struct ConteneurMessage: View {
         """)
             .multilineTextAlignment(strategy: .writingDirectionBased)
             .multilineTextAlignment(.leading)
-            .font((.custom("IosevkaCharonMono-Regular", size: 14, relativeTo: .caption)))
+            .carteDescription()
             .padding([.leading, .trailing, .bottom], 12)
             .padding(.top, 8)
             .background{
                 UnevenRoundedRectangle(topLeadingRadius: topLeading, bottomLeadingRadius: bottomLeading, bottomTrailingRadius: bottomTrailing, topTrailingRadius: topTrailing)
                     .fill(fillConteneur)
                     .stroke(strokeConteneur, lineWidth: 0.5)
-                    .frame(width: .infinity)
             }
             .opacity(0.8)
         }

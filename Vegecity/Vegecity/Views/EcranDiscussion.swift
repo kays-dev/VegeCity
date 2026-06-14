@@ -42,35 +42,41 @@ struct EcranDiscussion: View {
                             
                         }
                     }
-                    .safeAreaInset(edge: .bottom) {
-                        HStack(alignment: .top){
-                            BarreMessage(messageTape: $messageTape)
-                            
-                            Button {
-                                ajoutMessage(envoye: messageTape)
-                            } label: {
-                                BoutonGroupe(icone: "paperplane.fill", foreground: .vcIcon, fillIcone: messageTape.isEmpty ?  .vcSearchbarBg :.accent)
-                            }
-                            .disabled(messageTape.isEmpty)
-                            
-                        }.id(1)
-                            .padding(.top, 12)
-                    }
-                    .onAppear{
-                        basDePage.scrollTo(1)
-                    }
-                    .onChange(of: groupeMessages){
-                        basDePage.scrollTo(1)
-                    }
+                    
                 }
-                .scrollIndicators(.hidden)
-                .padding(.horizontal)
+                .safeAreaInset(edge: .bottom) {
+                    HStack(alignment: .top){
+                        BarreMessage(messageTape: $messageTape)
+                        
+                        
+                        Button {
+                            ajoutMessage(envoye: messageTape)
+                        } label: {
+                            BoutonGroupe(icone: "paperplane.fill", foreground: .vcIcon, fillIcone: messageTape.isEmpty ?  .vcSearchbarBg :.accent)
+                        }
+                        .disabled(messageTape.isEmpty)
+                        
+                    }
+                    .padding(.top, 12)
+                    .padding(.bottom, 12)
+                }
+                .onAppear{
+                    basDePage.scrollTo(1)
+                }
+                .onChange(of: groupeMessages){
+                    basDePage.scrollTo(1)
+                }
             }
-            .navigationTitle("\(groupe.activite.nom)")
-            
+            .scrollIndicators(.hidden)
+            .scrollDismissesKeyboard(.immediately)
+            .padding(.horizontal)
         }
+        .navigationTitle("\(groupe.activite.nom)")
+        .toolbar(.hidden, for:  .tabBar)
+        
     }
 }
+
 
 #Preview {
     struct PreviewDisc : View {

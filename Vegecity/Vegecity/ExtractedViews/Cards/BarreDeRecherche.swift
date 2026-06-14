@@ -11,6 +11,7 @@ struct BarreDeRecherche: View {
     @Binding var saisie : String
     
     var texte : String = ""
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         Capsule()
@@ -21,6 +22,7 @@ struct BarreDeRecherche: View {
                     
                     TextField(texte, text: $saisie, axis: .vertical)
                         .font((.custom("IosevkaCharonMono-Medium", size: 17, relativeTo: .callout)))
+                        .lineLimit(1)
                 }
                 .foregroundStyle(.vcSearchbarText)
                 .padding(.horizontal, 20)
@@ -39,5 +41,5 @@ struct BarreDeRecherche: View {
     }
     
     return PreviewBDR()
-
+    
 }
