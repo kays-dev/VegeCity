@@ -42,7 +42,12 @@ struct EcranDiscussion: View {
                             
                         }
                     }
-                    
+                    .task{
+                        basDePage.scrollTo(groupeMessages.last?.id)
+                    }
+                    .onChange(of: groupeMessages){
+                        basDePage.scrollTo(groupeMessages.last?.id)
+                    }
                 }
                 .safeAreaInset(edge: .bottom) {
                     HStack(alignment: .top){
@@ -59,12 +64,6 @@ struct EcranDiscussion: View {
                     }
                     .padding(.top, 12)
                     .padding(.bottom, 12)
-                }
-                .onAppear{
-                    basDePage.scrollTo(1)
-                }
-                .onChange(of: groupeMessages){
-                    basDePage.scrollTo(1)
                 }
             }
             .scrollIndicators(.hidden)
