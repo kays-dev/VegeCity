@@ -6,7 +6,20 @@
 //
 
 import SwiftUI
-
+//struct PlantTypes: View {
+//
+//    let typesConcrets: PlantType
+//
+//    var body: some View {
+//        HStack {
+//            Image(systemName: typesConcrets.image)
+//                .foregroundStyle(.accent)
+//                .frame(alignment: .leading)
+//            // .background(.accent)
+//            // .clipShape(.circle)
+//        }
+//    }
+//    }
 struct PlantCard: View {
     
     let plante: Plante
@@ -30,29 +43,21 @@ struct PlantCard: View {
                 .clipShape(.rect(cornerRadius: 12))
             
             VStack(alignment: .leading) {
-                Text(plante.nom)
-                    .font(.title2)
-                Text(plante.type)
-                    .font(.subheadline) //subheadline
-                    .foregroundStyle(.vcBodySecondary)
-                Spacer()
-                HStack(alignment: .bottom) {
-                  //  Image(systemName: typesConcrets.image)
-//                    ForEach(types) { typePrecis in
-//                        PlantTypes(typesConcrets: typePrecis)
-//                            .foregroundStyle(.accent)
-//                            .frame(alignment: .leading)
-                        // .background(.accent)
-                        // .clipShape(.circle)
-                    }
+                Text(plante.nom).grandTitre()
+                Text(plante.type).sousTitre()
+                //Spacer()
+                VStack(alignment: .leading, spacing: 24) {
+                    Image(systemName: "apple.logo")
+                        .foregroundStyle(.accent)
+                    .frame(alignment: .bottomLeading) }
                 }
             }
-            .frame(height: 100)
-            .styleCarte()
-            .overlay(alignment: .topTrailing){
-                Image(systemName: "heart")
-                    .foregroundStyle(.accent)
-                    .padding()
+        .frame(height: 100)
+        .styleCarte()
+        .overlay(alignment: .topTrailing){
+            Image(systemName: "heart")
+                .foregroundStyle(.accent)
+                .padding()
                 
                 if plante.favorites {
                     Image(systemName: "heart.fill").foregroundStyle(.accent) }
@@ -79,7 +84,7 @@ struct PlantCardExemple: View {
                 .clipShape(.rect(cornerRadius: 12))
             
             VStack(alignment: .leading) {
-                Text("Amarante ornementale")
+                Text("Amarante ornementale manifique")
                     .font(.title2)
                 //  Divider()
                 
@@ -87,7 +92,7 @@ struct PlantCardExemple: View {
                     .font(.subheadline) //subheadline
                     .foregroundStyle(.vcBodySecondary)
                 
-                    Image(systemName: "carrot.fill")
+                    Image(systemName: "apple.logo")
                         .foregroundStyle(.accent)
                         .frame(alignment: .bottomLeading)
                     // .background(.accent)

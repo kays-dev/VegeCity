@@ -1,10 +1,10 @@
+////////
+////////  PlantTypes.swift
+////////  Vegecity
+////////
+////////  Created by apprenant168 on 13/06/2026.
+////////
 //////
-//////  PlantTypes.swift
-//////  Vegecity
-//////
-//////  Created by apprenant168 on 13/06/2026.
-//////
-////
 //import SwiftUI
 //
 //struct PlantTypes: View {

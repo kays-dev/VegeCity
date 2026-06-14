@@ -37,9 +37,7 @@ struct PlantJour: View {
 //                        
 //                    }
                     
-                    Text(plantJour.nom)
-                        .font(.caption)
-                        .foregroundStyle(.vcBodyPrimary)
+                Text(plantJour.nom).carteDescription()
                         .lineLimit(1)
                         .padding(.bottom)
             } //.styleCarte()

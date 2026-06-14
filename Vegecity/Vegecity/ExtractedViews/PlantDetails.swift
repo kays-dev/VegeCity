@@ -1,17 +1,16 @@
+////
+////  PlantDetails.swift
+////  Vegecity
+////
+////  Created by apprenant168 on 14/06/2026.
+////
 //
-//  PlantDetails.swift
-//  Vegecity
-//
-//  Created by apprenant168 on 14/06/2026.
-//
-
 import SwiftUI
 
 struct PlantDetails: View {
     let planteDetails: Plante
     
     var body: some View {
-        NavigationStack {
             HStack(alignment: .top, spacing: 12){
                 Image(planteDetails.image)
                     .resizable()
@@ -28,22 +27,19 @@ struct PlantDetails: View {
                     .aspectRatio(1/1 , contentMode: .fit) //permet à l'image de respecter un ratio en fonction de l'espace et de la taille de l'écran
                     .clipShape(.rect(cornerRadius: 12))
                 
-                VStack(alignment: .leading) {
-                    Text(planteDetails.nom)
-                        .font(.title2)
-                    Text(planteDetails.type)
-                        .font(.subheadline) //subheadline
-                        .foregroundStyle(.vcBodySecondary)
-                    Spacer()
-                    HStack(alignment: .bottom) {
-                        //  Image(systemName: typesConcrets.image)
-                        //                    ForEach(types) { typePrecis in
-                        //                        PlantTypes(typesConcrets: typePrecis)
-                        //                            .foregroundStyle(.accent)
-                        //                            .frame(alignment: .leading)
-                        // .background(.accent)
-                        // .clipShape(.circle)
-                    }
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(planteDetails.nom).carteDescription()
+                    Text(planteDetails.type).sousTitre()
+                    VStack(alignment: .leading, spacing: 24) {
+                        HStack(alignment: .bottom) {
+                            Image(systemName: "apple.logo")
+                            //                    ForEach(types) { typePrecis in
+                            //                        PlantTypes(typesConcrets: typePrecis)
+                            //                            .foregroundStyle(.accent)
+                            //                            .frame(alignment: .leading)
+                            // .background(.accent)
+                            // .clipShape(.circle)
+                        } }
                 }
             }
             .frame(height: 100)
@@ -58,7 +54,6 @@ struct PlantDetails: View {
             }
         }
     }
-}
 struct PlantDetailsExemple: View {
     var body: some View {
         HStack(alignment: .top, spacing: 12){
@@ -79,7 +74,8 @@ struct PlantDetailsExemple: View {
             
             VStack(alignment: .leading) {
                 Text("Amarante ornementale")
-                    .font(.title2)
+                    .font((.custom("IosevkaCharonMono-Bold", size: 20, relativeTo: .title2)))
+                    .foregroundStyle(.vcBodyPrimary)
                 //  Divider()
                 
                 Text("Feuillages")
