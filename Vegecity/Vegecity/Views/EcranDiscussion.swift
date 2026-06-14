@@ -65,6 +65,12 @@ struct EcranDiscussion: View {
                     .padding(.top, 12)
                     .padding(.bottom, 12)
                 }
+                .onAppear{
+                    basDePage.scrollTo(1)
+                }
+                .onChange(of: groupeMessages){
+                    basDePage.scrollTo(1)
+                }
             }
             .scrollIndicators(.hidden)
             .scrollDismissesKeyboard(.immediately)

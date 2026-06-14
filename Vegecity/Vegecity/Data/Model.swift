@@ -10,6 +10,7 @@ import CoreTransferable
 
 struct Plante: Identifiable, Hashable {
     let id = UUID()
+    
     let nom: String
     let type: String
     let details : String
@@ -19,6 +20,7 @@ struct Plante: Identifiable, Hashable {
 
 struct Activite: Identifiable, Hashable {
     let id = UUID()
+    
     let nom: String // nom du lieu
     let cp: Int // code postale pour definir les arrondissement
     let desc_lieu: String
@@ -26,6 +28,7 @@ struct Activite: Identifiable, Hashable {
     let date: Date //activité  date, heure? de l'activité
     let image: String // image de l'activité
     let nbrPlace: Int // nombre de place max
+    
     let niveau: Int //1, 2 ou 3
     let accessibilite: Bool
     let inscription: Bool
@@ -36,6 +39,7 @@ struct Activite: Identifiable, Hashable {
 
 struct Membre: Identifiable, Hashable {
     let id = UUID()
+    
     let pseudo: String
     let image: String
     let description: String
@@ -43,6 +47,7 @@ struct Membre: Identifiable, Hashable {
 
 struct Problematique: Identifiable, Hashable  {
     let id = UUID()
+    
     let nom: String
     let icone: String
     let icone2: String
@@ -58,14 +63,17 @@ struct Problematique: Identifiable, Hashable  {
 
 struct Groupe: Identifiable, Hashable {
     let id = UUID()
+    
     let activite: Activite
     let membres: [Membre]
     var messages: [Message]
+
     var archive: Bool = false
 }
 
 struct Message: Identifiable, Hashable {
     let id = UUID()
+
     let membre : Membre
     let detail : String
     let dateEnvoi: DateComponents

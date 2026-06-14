@@ -21,7 +21,6 @@ let activites: [Activite] = [
     Activite(nom: "Gambetta", cp: 75013, desc_lieu: "Jardinière publique", desc_activite: "Potager partagé municipal", date: Date(), image: "gambetta", nbrPlace: 9, niveau: 1, accessibilite: true, inscription: false, option: [jardinage])
 ]
 
-
 func getArrondissement(cp : Int) -> String {
     switch cp {
     case 75001 :

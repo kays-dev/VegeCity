@@ -12,6 +12,7 @@ struct ContentView: View {
         TabView {
             Tab("Activités", systemImage: "binoculars.fill") {
                 CardListView()
+                //Ecran Activité
             }
             Tab("Groupes", systemImage: "bubble.left.and.text.bubble.right.fill") {
                 EcranGroupes()

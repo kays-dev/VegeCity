@@ -26,6 +26,7 @@ let silence = Membre(pseudo: "SilenceVégétal", image: "SilenceVegetal", descri
 let petitceituriste = Membre(pseudo: "PetitCeituriste", image: "PetitCeituriste", description: "Fan de la Petite Ceinture et des friches fleuries")
 let canalvert = Membre(pseudo: "CanalVert10", image: "CanalVert10", description: "Riverain du canal, jardin communautaire Villemin")
 let planetteverte = Membre(pseudo: "PlanetteVerte", image: "PlanetteVerte", description: "Écolière en terminale, projet végétalisation cour d'école")
+//Instances des membres
 
 let membres = [botanix, rosesLuxo, composteur, jardinier, pousse, miel, balcon, mosseur, urban, vigne, buttes, fougeres, grainedepluie, nocturnesauvage, chlorophylle, silence, petitceituriste, canalvert, planetteverte]
 
