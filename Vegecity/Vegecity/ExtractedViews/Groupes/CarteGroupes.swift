@@ -17,7 +17,7 @@ struct CarteGroupes: View {
                 .scaledToFill()
                 .overlay{
                     Rectangle().fill(.vcGreenFilter)
-                    Rectangle().fill(.vcLighterFilter)
+                    Rectangle().fill(.vcLightFilter)
                 }
                 .frame(minWidth: 0,
                        maxWidth: 100,

@@ -33,7 +33,7 @@ let membres = [botanix, rosesLuxo, composteur, jardinier, pousse, miel, balcon, 
 let utilisateur = Membre(pseudo: "TerreNourricière", image: "TerreNourriciere", description: "Permaculture, semences anciennes, ateliers gratuits")
 
 //Instances du Groupe 1
-let groupe1 = Groupe(activite: activité1, membres: [pousse, planetteverte, balcon, utilisateur], messages: [
+let groupe1 = Groupe(activite: activites[0], membres: [pousse, planetteverte, balcon, utilisateur], messages: [
     
     Message(membre: utilisateur, detail: "Bonjour ! Petite question avant le désherbage de samedi : avec la sécheresse de cet été, certaines de mes plantes ont vraiment souffert. Vous avez adapté les variétés du potager ?", dateEnvoi: DateComponents(timeZone: .autoupdatingCurrent, year: 2026, month: 06, day: 08, hour: 08, minute: 42)),
     
@@ -53,7 +53,7 @@ let groupe1 = Groupe(activite: activité1, membres: [pousse, planetteverte, balc
 ])
 
 //Instances du Groupe 2
-let groupe2 = Groupe(activite: activite2, membres: [pousse, chlorophylle, jardinier, utilisateur], messages: [
+let groupe2 = Groupe(activite: activites[2], membres: [pousse, chlorophylle, jardinier, utilisateur], messages: [
 
     Message(membre: utilisateur, detail: "Je viens de découvrir ce square et je suis bluffée. En pleine Butte-aux-Cailles, au milieu d'un quartier très dense et minéral, on sent vraiment une différence de température ici. C'est frappant.", dateEnvoi: DateComponents(timeZone: .autoupdatingCurrent, year: 2026, month: 06, day: 11, hour: 10, minute: 05)),
     

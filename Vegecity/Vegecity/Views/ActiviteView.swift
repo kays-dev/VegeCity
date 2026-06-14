@@ -16,17 +16,16 @@ struct ActiviteView: View {
     var body: some View {
         
         ZStack {
-            VStack(spacing: 18) {
-                Text(activite.nom)
-                    .font(.largeTitle)
+            VStack(spacing: 16) {
                 HStack {
                     Text(activite.desc_lieu)
-                        .font(.headline)
+
                     Image(systemName: "figure.roll.circle.fill")
                         .font(.title2)
                     Image(systemName: "1.circle.fill")
                         .font(.title2)
                 }
+                .grandTitre()
                 
                 Image(activite.image)
                     .resizable()
@@ -35,7 +34,7 @@ struct ActiviteView: View {
                 
                 Text(activite.nbrPlace > 0 ? "Places restante : \(activite.nbrPlace)" : "Complet")
                     .foregroundStyle(activite.nbrPlace > 0 ? .vcCardIcon : Color.red)
-                    .font(.title2)
+                    .carteDescription()
                 
                 ScrollView(.horizontal) {
                     HStack(spacing: 15) {
@@ -44,32 +43,39 @@ struct ActiviteView: View {
                         }
                     }
                 }
+                .scrollIndicators(.hidden)
                 
-                HStack(alignment: .center, spacing: 8) {
+                HStack(alignment: .center, spacing: 4) {
                     Text("Prochaine date :")
-                        .font(.title3)
                         .foregroundStyle(.accent)
                     Text(activite.date, format: .dateTime.day().month().year().hour().minute())
+                        .foregroundStyle(.vcBodyPrimary)
                 }
+                .carteDescriptionItalique()
+                .padding(.bottom)
+                
                 Text(activite.desc_activite)
                     .multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity)
+                    .carteDescription()
+
+                Spacer()
                 
-                
-                VStack(alignment: .center, spacing: 0) {
+                VStack(spacing: 16) {
                     ForEach(activite.option) { problematique in
-                        HStack(alignment: .center, spacing: 5) {
+                        HStack(spacing: 8) {
                             Image(systemName: problematique.icone)
                             Text(problematique.nom)
-                                .padding(4)
                         }
                         .foregroundStyle(.vcBodySecondary)
-                        .background(Capsule().fill(.vcSearchbarBg).frame(width: 160, height: 30))
-                    }.padding(.top, 12)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 4)
+                        .background(Capsule().fill(.vcSearchbarBg))
+                        .legende()
+                    }
                 }
                 
                 Spacer()
-                HStack {
+                
                     Button {
                         
                     } label: {
@@ -81,12 +87,12 @@ struct ActiviteView: View {
                     .buttonStyle(.borderedProminent)
                     .tint(.accent).opacity(0.7)
                     .disabled(activite.nbrPlace <= 0)
-                }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-            .padding()
+            .frame(maxWidth: .infinity, alignment: .top)
+            .padding(.horizontal)
             .background(.vcPrimary)
-        }
+        }        .navigationTitle("\(activite.nom)")
+            .toolbar(.hidden, for:  .tabBar)
     }
 }
 

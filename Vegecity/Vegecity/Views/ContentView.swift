@@ -12,13 +12,12 @@ struct ContentView: View {
         TabView {
             Tab("Activités", systemImage: "binoculars.fill") {
                 CardListView()
-                //Ecran Activité
             }
             Tab("Groupes", systemImage: "bubble.left.and.text.bubble.right.fill") {
                 EcranGroupes()
             }
             Tab("Plantes", systemImage: "tree") {
-                //Ecran Plantes
+                Ecran3Plantes()
             }
             Tab("Infos", systemImage: "info.circle.fill") {
                 EcranInformations()

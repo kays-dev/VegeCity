@@ -37,96 +37,110 @@ struct CardListView: View {
     
     
     var body: some View {
-        
-        NavigationStack {
+        VStack(spacing: 24) {
             
-            VStack(spacing: 24) {
-                
-                BarreDeRecherche(saisie: $searchText)
-                    .padding(.horizontal, 42)
-                
-                HStack(spacing: 32) {
-                    Picker("Picker", selection: $choiceSelected) {
+            BarreDeRecherche(saisie: $searchText, texte: "Rechercher une activité")
+            
+            
+            HStack(spacing: 32) {
+                Menu {
+                    Picker(selection: $choiceSelected) {
                         ForEach(Niveau.allCases) { niveau in
                             Text(niveau.name).tag(niveau)
                         }
-                    }
-                    .padding(8)
-                    .background{
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(.vcCardBg)
-                            .stroke(.vcCardBorder, lineWidth: 1)
-                            .shadow(color: .vcCardShadow, radius: 8, x:0, y:2)
-                        
-                    }
-                    .tint(.vcBodyPrimary)
-                    
-                    
-                    Button("Accessible") {
-                        withAnimation(.snappy) {
-                            isVisible.toggle()
-                        }
-                    }
-                    
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 16)
-                    .background{
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(isVisible ? .vcSecondary : .vcCardBg)
-                            .stroke(.vcCardBorder, lineWidth: 1)
-                            .shadow(color: .vcCardShadow, radius: 8, x:0, y:2)
-                    }
-                    .tint(.vcBodyPrimary)
+                    } label: {}
+                } label: {
+                    Text(choiceSelected.name)
+                        .foregroundStyle(.vcBodyPrimary)
+                        .boutonFiltre()
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 8)
+                .background{
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(.vcCardBg)
+                        .stroke(.vcCardBorder, lineWidth: 1)
+                        .shadow(color: .vcCardShadow, radius: 8, x:0, y:2)
                     
                 }
-                .frame(maxWidth: .infinity, alignment: .center)
                 
+                Button("Accessible") {
+                    withAnimation(.snappy) {
+                        isVisible.toggle()
+                    }
+                }
+                .foregroundStyle(isVisible ? .vcPrimary : .vcBodyPrimary)
+                .boutonFiltre()
+                .padding(.horizontal, 16)
+                .padding(.vertical, 8)
+                .background{
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(isVisible ? .vcCardIcon : .vcCardBg)
+                        .stroke(.vcCardBorder, lineWidth: 1)
+                        .shadow(color: .vcCardShadow, radius: 8, x:0, y:2)
+                }
+                .tint(.vcBodyPrimary)
                 
+            }
+            .frame(maxWidth: .infinity, alignment: .center)
+            .foregroundStyle(.vcBodyPrimary)
+            .boutonFiltre()
+            
+            VStack(spacing: 16){
                 ForEach(filteredActivites) { activite in
-                    
-                    HStack() {
-                        
-                        Image(activite.image)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 100, height: 100)
-                            .cornerRadius(10)
-                            .padding(2)
-                        
-                        VStack(alignment: .leading, spacing: 0) {
-                            Text(activite.nom)
-                                .font(.headline)
-                            Text(activite.desc_activite)
-                                .font(.subheadline)
-                                .padding(.vertical, 5)
-                                .font(.caption)
+                    NavigationLink{
+                        ActiviteView(activite: activite)
+                    } label : {
+                        HStack{
                             
-                            HStack(spacing: 4) {
-                                Image(systemName: "\(activite.niveau).circle")
-                                    .font(.title2 )
-                                Image(systemName: "figure.roll.circle")
-                                    .font(.title2 )
-                            }
-                           
-                            HStack {
+                            Image(activite.image)
+                                .resizable()
+                                .scaledToFill()
+                                .overlay{
+                                    Rectangle().fill(.vcGreenFilter)
+                                    Rectangle().fill(.vcLightFilter)
+                                }
+                                .frame(minWidth: 0,
+                                       maxWidth: 100,
+                                       minHeight: 0,
+                                       maxHeight: 100
+                                )
+                                .aspectRatio(1/1 , contentMode: .fit)
+                                .clipShape(.rect(cornerRadius: 12))
+                            
+                            VStack(alignment: .leading, spacing: 4) {
+                                VStack(alignment: .leading) {
+                                    Text(activite.nom)
+                                        .grandTitre()
+                                    Text(activite.desc_lieu)
+                                        .sousTitre()
+                                }
+                                
+                                HStack(spacing: 8) {
+                                    Image(systemName: "\(activite.niveau).circle")
+                                    Image(systemName: "figure.roll.circle")
+                                }
+                                .sousTitre()
+                                
+                                Spacer()
+                                
                                 Text(activite.nbrPlace > 0 ?  "Libre" : "Complet")
-                                    .font(.subheadline)
-                                    .foregroundStyle(Color.orange)
-                                    .padding(.vertical, 10)
-                                    .padding(.horizontal, 0)
-                                    .frame(maxWidth: .infinity,maxHeight: 100, alignment: .topLeading)
+                                    .legende()
+                                
                             }
-                            
+                            .frame(maxWidth: .infinity, alignment: .topLeading)
                         }
-                        .frame(maxWidth: .infinity,maxHeight: 100, alignment: .topLeading)
+                        .frame(height: 100)
+                        .styleCarte()
                     }
-                    .styleCarte()
                 }
-                
-            }.padding(12)
-                .stylePage(photo: "gambetta", titrePage: "Lieu d'activité")
+            }
+            
         }
-        
+        .padding(.top, 40)
+        .padding(.horizontal, 20)
+        .padding(.bottom, 28)
+        .stylePage(photo: "gambetta", titrePage: "Lieu d'activité")
     }
     
     private var filteredActivites: [Activite] {

@@ -26,7 +26,7 @@ extension View {
 struct SousTitre: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font((.custom("IosevkaCharonMono-Regular", size: 17, relativeTo: .title3)))
+            .font((.custom("IosevkaCharonMono-Regular", size: 14, relativeTo: .title3)))
             .foregroundStyle(.vcBodySecondary)
     }
 }

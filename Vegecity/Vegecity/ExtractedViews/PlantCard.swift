@@ -25,21 +25,20 @@ struct PlantCard: View {
     let plante: Plante
     
     var body: some View {
-        
         HStack(alignment: .top, spacing: 12){
             Image(plante.image)
                 .resizable()
                 .scaledToFill()
                 .overlay{
-                    // Rectangle().fill(.vcGreenFilter)
-                    //Rectangle().fill(.vcLighterFilter)
+                    Rectangle().fill(.vcGreenFilter)
+                    Rectangle().fill(.vcLightFilter)
                 }
                 .frame(minWidth: 0,
-                       maxWidth: .infinity,
+                       maxWidth: 100,
                        minHeight: 0,
-                       maxHeight: .infinity
+                       maxHeight: 100
                 )
-                .aspectRatio(1/1 , contentMode: .fit) //permet à l'image de respecter un ratio en fonction de l'espace et de la taille de l'écran
+                .aspectRatio(1/1 , contentMode: .fit) 
                 .clipShape(.rect(cornerRadius: 12))
             
             VStack(alignment: .leading) {
@@ -113,5 +112,5 @@ struct PlantCardExemple: View {
     }
     
 #Preview {
-   PlantCardExemple()
+    PlantCard(plante: exemples[1])
 }
