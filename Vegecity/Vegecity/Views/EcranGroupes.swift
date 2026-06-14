@@ -12,9 +12,11 @@ struct EcranGroupes: View {
     
     @State private var tousGroupes : [Groupe] = groupes
     
-    @State private var resultats : [Groupe] = []
+    @State private var resultats : [Groupe] = groupes
     
     @State private var archives : Bool = false
+    
+    @FocusState private var isFocused: Bool
     
     private func appliquerFiltres() {
         var liste = tousGroupes
@@ -41,10 +43,7 @@ struct EcranGroupes: View {
                     NavigationLink {
                         EcranDiscussion(groupe: $groupe, groupeMessages: $groupe.messages)
                     } label : {
-                        CarteGroupes(image: groupe.activite.image, titre: groupe.activite.nom,
-                                     arrondissement: getArrondissement(cp: groupe.activite.cp),
-                                     membres: groupe.membres.map{"@"+$0.pseudo},
-                                     dernierMessage: groupe.messages.last?.detail ?? "")
+                        CarteGroupes(groupe: groupe)
                     }
                     .contextMenu{
                         Button(role: .destructive){
@@ -61,15 +60,13 @@ struct EcranGroupes: View {
                     }
                 }
             }
-            .onAppear{
-                appliquerFiltres()
-            }
             .onChange(of: rechercheGroupe) {
                 appliquerFiltres()
             }
             .safeAreaInset(edge: .top) {
                 HStack{
                     BarreDeRecherche(saisie: $rechercheGroupe, texte: "Rechercher un groupe")
+                        .focused($isFocused)
                     
                     Button{
                         archives.toggle()
@@ -86,6 +83,15 @@ struct EcranGroupes: View {
         .padding(.horizontal, 20)
         .padding(.bottom, 28)
         .stylePage(photo: "groupCover", titrePage: "Groupes de discussion")
+        .onTapGesture {
+            isFocused = false
+            UIApplication.shared.sendAction(
+                #selector(UIResponder.resignFirstResponder),
+                to: nil,
+                from: nil,
+                for: nil
+            )
+        }
         
     }
 }

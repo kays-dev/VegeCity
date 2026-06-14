@@ -30,7 +30,7 @@ struct HeureMessage: View {
             
             Text("\(dateMessage.hour!):\(dateMessage.minute!)")
         }
-        .font((.custom("IosevkaCharonMono-Regular", size: 10, relativeTo: .caption2)))
+        .font((.custom("IosevkaCharonMono-Regular", size: 12, relativeTo: .caption2)))
         .opacity(0.8)
     }
 }

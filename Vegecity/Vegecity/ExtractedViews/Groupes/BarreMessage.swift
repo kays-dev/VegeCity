@@ -15,6 +15,7 @@ struct BarreMessage: View {
             TextField("Entrez votre message", text: $messageTape, axis: .vertical)
                 .font((.custom("IosevkaCharonMono-Medium", size: 17, relativeTo: .callout)))
                 .padding(.leading, 24)
+            
         }
         .frame(maxWidth: .infinity,alignment: .topLeading)
         .overlay(alignment: .topLeading) {

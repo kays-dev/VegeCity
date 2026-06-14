@@ -29,6 +29,7 @@ struct StylePage: ViewModifier {
                 }
                 .padding(.top, 16*16)
                 .ignoresSafeArea()
+                .scrollIndicators(.hidden)
             }
         }
     }
@@ -44,7 +45,7 @@ extension View {
 struct ExemplePage: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 32){
-            CarteGroupes(image: "defaultCover",titre: "Potager aux Oiseaux", arrondissement: "3e", membres: ["@PousseVerte75", "@PlanetteVerte"], dernierMessage: "Parfait. Et on en profite pour repiquer les jeunes plants dans la parcelle A, elle est prête depuis mardi dernier 🌱")
+            CarteGroupes(groupe: groupe1)
         }
         .padding(.top, 40)
         .padding(.horizontal, 20)
