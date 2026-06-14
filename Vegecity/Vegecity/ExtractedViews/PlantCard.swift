@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PlantCard: View {
     
-    //let typesPlusConcrets: PlantType
     let plante: Plante
     
     var body: some View {
@@ -36,16 +35,18 @@ struct PlantCard: View {
                 Text(plante.type)
                     .font(.subheadline) //subheadline
                     .foregroundStyle(.vcBodySecondary)
+                Spacer()
                 HStack(alignment: .bottom) {
-                    ForEach(types) { typePrecis in
-                        PlantTypes(typesConcrets: typePrecis)
-                            .foregroundStyle(.accent)
-                            .frame(alignment: .leading)
+                  //  Image(systemName: typesConcrets.image)
+//                    ForEach(types) { typePrecis in
+//                        PlantTypes(typesConcrets: typePrecis)
+//                            .foregroundStyle(.accent)
+//                            .frame(alignment: .leading)
                         // .background(.accent)
                         // .clipShape(.circle)
                     }
                 }
-            }}
+            }
             .frame(height: 100)
             .styleCarte()
             .overlay(alignment: .topTrailing){
@@ -106,14 +107,6 @@ struct PlantCardExemple: View {
         }
     }
     
-    struct PlantCardView: View {
-        var body: some View {
-            VStack { ForEach(exemples) { plante in
-                PlantCard(plante: plante)
-                }
-            }
-        }
-    }
 #Preview {
    PlantCardExemple()
 }
