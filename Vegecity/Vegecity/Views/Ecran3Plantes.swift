@@ -14,11 +14,14 @@ struct Ecran3Plantes: View {
     // @State private var searchText = ""
     // @State private var searchIsActive = false
     @State private var typeSelected = ""
+    
+    @FocusState private var isFocused: Bool
     let plantSearch: [Plante] = exemples
     var body: some View {
         VStack {
             VStack(alignment: .leading, spacing: 24) {
                 BarreDeRecherche(saisie: $recherche, texte: "Lierre, Pinus, fruitiers...")
+                    .focused($isFocused)
                 HStack() {
                     Picker("Type", selection: $typeSelected) {
                         ForEach(exemples) { type in Text(type.type)}
@@ -74,6 +77,15 @@ struct Ecran3Plantes: View {
         .padding(.horizontal, 20)
         .padding(.bottom, 28)
         .stylePage(photo: "plantesCover", titrePage: "Choix d'espèces")
+        .onTapGesture {
+            isFocused = false
+            UIApplication.shared.sendAction(
+                #selector(UIResponder.resignFirstResponder),
+                to: nil,
+                from: nil,
+                for: nil
+            )
+        }
     }
     //.searchable(text: $recherche)
 }

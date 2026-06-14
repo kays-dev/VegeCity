@@ -34,13 +34,14 @@ struct CardListView: View {
     @State private var searchText = ""
     @State private var isTouch = false
     @State private var isVisible = false
+    @FocusState private var isFocused: Bool
     
     
     var body: some View {
         VStack(spacing: 24) {
             
             BarreDeRecherche(saisie: $searchText, texte: "Rechercher une activité")
-            
+                .focused($isFocused)
             
             HStack(spacing: 32) {
                 Menu {
@@ -141,6 +142,15 @@ struct CardListView: View {
         .padding(.horizontal, 20)
         .padding(.bottom, 28)
         .stylePage(photo: "gambetta", titrePage: "Lieux à proximité")
+        .onTapGesture {
+            isFocused = false
+            UIApplication.shared.sendAction(
+                #selector(UIResponder.resignFirstResponder),
+                to: nil,
+                from: nil,
+                for: nil
+            )
+        }
     }
     
     private var filteredActivites: [Activite] {
