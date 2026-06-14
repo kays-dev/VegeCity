@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreTransferable
 
 struct Plante: Identifiable, Hashable {
     let id = UUID()
@@ -33,7 +34,6 @@ struct Activite: Identifiable, Hashable {
 
 }
 
-
 struct Membre: Identifiable, Hashable {
     let id = UUID()
     let pseudo: String
@@ -45,12 +45,78 @@ struct Problematique: Identifiable, Hashable  {
     let id = UUID()
     let nom: String
     let icone: String
+    let icone2: String
+    
+    nonisolated static func == (lhs: Problematique, rhs: Problematique) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    nonisolated func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }
 
 struct Groupe: Identifiable, Hashable {
     let id = UUID()
     let activite: Activite
     let membres: [Membre]
-    let messagesRecus: [String]
-    let messagesEnvoyes: [String]
+    var messages: [Message]
+    var archive: Bool = false
+}
+
+struct Message: Identifiable, Hashable {
+    let id = UUID()
+    let membre : Membre
+    let detail : String
+    let dateEnvoi: DateComponents
+}
+
+struct Information: Identifiable, Hashable, Transferable {
+    let id = UUID()
+    
+    let titre: String
+    let source: String
+    
+    let type: TypeInformation
+    let problematiques: [Problematique]
+    
+    let resume: String
+    let description: String
+    
+    let link: String
+    
+    let transferSubject: String = "J'ai trouvé cette ressource sympa !"
+    let transferMessage: String = "-S'impliquer maintenant, c'est vivre dans une ville plus habitable demain 🌱-"
+    let transferImage: String = "leaf.fill"
+    
+    
+    static var transferRepresentation: some TransferRepresentation {
+        ProxyRepresentation(exporting: \.titre)
+        ProxyRepresentation(exporting: \.source)
+        ProxyRepresentation(exporting: \.resume)
+        ProxyRepresentation(exporting: \.transferImage)
+    }
+    nonisolated static func == (lhs: Information, rhs: Information) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    nonisolated func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
+}
+
+struct TypeInformation: Identifiable, Hashable {
+    let id = UUID()
+    
+    let nom: String
+    let icone: String
+    
+    nonisolated static func == (lhs: TypeInformation, rhs: TypeInformation) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    nonisolated func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }
