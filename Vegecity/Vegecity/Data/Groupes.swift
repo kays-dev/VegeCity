@@ -7,8 +7,6 @@
 
 import Foundation
 
-//Instances des membres
-
 let botanix = Membre(pseudo: "Botanix_Paris", image: "Botanix_Paris", description: "Botaniste amateur, chasseur de plantes sauvages urbaines")
 let rosesLuxo = Membre(pseudo: "RosesDuLuxo", image: "RosesDuLuxo", description: "Passionnée de roses anciennes, Luxembourg ma 2e maison")
 let composteur = Membre(pseudo: "ComposteurDu19", image: "ComposteurDu19", description: "Compostage partagé Buttes-Chaumont, bénévole depuis 3 ans")
