@@ -64,6 +64,11 @@ struct EcranDiscussion: View {
                     }
                     .padding(.top, 12)
                     .padding(.bottom, 12)
+                    .background{
+                        Rectangle()
+                            .fill(.vcPrimary)
+                            .ignoresSafeArea()
+                    }
                 }
                 .onAppear{
                     basDePage.scrollTo(1)
